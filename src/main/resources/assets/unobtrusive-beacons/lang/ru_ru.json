@@ -1,0 +1,9 @@
+{
+  "yacl3.config.unobtrusive-beacons:config.category.beam": "Настройки луча маяка",
+  "yacl3.config.unobtrusive-beacons:config.opaqueBeamHeight": "Высота непрозрачной части луча",
+  "yacl3.config.unobtrusive-beacons:config.opaqueBeamHeight.desc": "Высота непрозрачной части луча маяка (в блоках)",
+  "yacl3.config.unobtrusive-beacons:config.fadedBeamHeight": "Высота затухающей части луча",
+  "yacl3.config.unobtrusive-beacons:config.fadedBeamHeight.desc": "Высота части луча маяка, которая постепенно становится прозрачной (в блоках)",
+  "yacl3.config.unobtrusive-beacons:config.alphaMultiplier": "Множитель прозрачности",
+  "yacl3.config.unobtrusive-beacons:config.alphaMultiplier.desc": "Множитель прозрачности луча маяка"
+}

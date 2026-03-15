@@ -1,0 +1,9 @@
+{
+  "yacl3.config.unobtrusive-beacons:config.category.beam": "Beacon beam settings",
+  "yacl3.config.unobtrusive-beacons:config.opaqueBeamHeight": "Opaque Beam Height",
+  "yacl3.config.unobtrusive-beacons:config.opaqueBeamHeight.desc": "Height of the opaque part of the beacon beam (in blocks)",
+  "yacl3.config.unobtrusive-beacons:config.fadedBeamHeight": "Faded Beam Height",
+  "yacl3.config.unobtrusive-beacons:config.fadedBeamHeight.desc": "Height of the faded part of the beacon beam (in blocks)",
+  "yacl3.config.unobtrusive-beacons:config.alphaMultiplier": "Alpha multiplier",
+  "yacl3.config.unobtrusive-beacons:config.alphaMultiplier.desc": "Beam alpha multiplier"
+}

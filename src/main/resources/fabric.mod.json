@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "unobtrusive-beacons",
+  "version": "${version}",
+  "name": "Unobtrusive Beacons",
+  "description": "Configurable unobtrusive beacon beams with alpha fade",
+  "authors": [
+    "DimasKama"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/unobtrusive-beacons",
+    "sources": "https://github.com/DimasKama/unobtrusive-beacons"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/unobtrusive-beacons/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.dimaskama.unobtrusivebeacons.UnobtrusiveBeacons"
+    ],
+    "modmenu": [
+      "net.dimaskama.unobtrusivebeacons.compat.UnobtrusiveBeaconsModMenuCompat"
+    ]
+  },
+  "mixins": [
+    "unobtrusive-beacons.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=${minecraft_version}",
+    "fabric-api": "*",
+    "yet_another_config_lib_v3": ">=${yacl_version}"
+  }
+}
