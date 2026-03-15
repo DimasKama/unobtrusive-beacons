@@ -7,19 +7,20 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.client.renderer.blockentity.state.BeaconRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.util.Mth;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BeaconRenderer.class)
 abstract class BeaconRendererMixin {
 
-    /**
-     * @author DimasKama
-     * @reason custom beam rendering
-     */
-    @Overwrite
-    public void submit(BeaconRenderState beaconRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
+    @Inject(
+            method = "submit(Lnet/minecraft/client/renderer/blockentity/state/BeaconRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/CameraRenderState;)V",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    public void submit(BeaconRenderState beaconRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState, CallbackInfo ci) {
         UnobtrusiveBeaconsConfig config = UnobtrusiveBeaconsConfig.HANDLER.instance();
 
         float opaqueMaxY = config.opaqueBeamHeight;
@@ -78,6 +79,8 @@ abstract class BeaconRendererMixin {
 
             y += sectionHeight;
         }
+
+        ci.cancel();
     }
 
 }
