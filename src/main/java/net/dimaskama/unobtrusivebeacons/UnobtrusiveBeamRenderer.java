@@ -1,6 +1,7 @@
 package net.dimaskama.unobtrusivebeacons;
 
 import com.mojang.blaze3d.pipeline.BlendFunction;
+import com.mojang.blaze3d.pipeline.ColorTargetState;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -20,7 +21,7 @@ public class UnobtrusiveBeamRenderer {
     public static final RenderPipeline RENDER_PIPELINE = RenderPipelines.register(
             RenderPipeline.builder(RenderPipelines.BEACON_BEAM_SNIPPET)
                     .withLocation(UnobtrusiveBeacons.id("pipeline/unobstructive_beacon_beam"))
-                    .withBlend(BlendFunction.TRANSLUCENT)
+                    .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
                     .build()
     );
     public static final RenderType RENDER_TYPE = RenderType.create(
