@@ -6,10 +6,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderStateShard;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
+import net.minecraft.client.renderer.rendertype.OutputTarget;
+import net.minecraft.client.renderer.rendertype.RenderSetup;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
@@ -24,14 +25,10 @@ public class UnobtrusiveBeamRenderer {
     );
     public static final RenderType RENDER_TYPE = RenderType.create(
             "unobstructive_beacon_beam",
-            1536,
-            false,
-            true,
-            RENDER_PIPELINE,
-            RenderType.CompositeState.builder()
-                    .setTextureState(new RenderStateShard.TextureStateShard(BeaconRenderer.BEAM_LOCATION, false))
-                    .setOutputState(RenderType.ITEM_ENTITY_TARGET)
-                    .createCompositeState(false)
+            RenderSetup.builder(RENDER_PIPELINE)
+                    .withTexture("Sampler0", BeaconRenderer.BEAM_LOCATION)
+                    .setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET)
+                    .createRenderSetup()
     );
 
     public static void submitBeaconBeam(
