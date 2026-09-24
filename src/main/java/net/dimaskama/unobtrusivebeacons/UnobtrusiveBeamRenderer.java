@@ -1,15 +1,14 @@
 package net.dimaskama.unobtrusivebeacons;
 
-import com.mojang.blaze3d.pipeline.BlendFunction;
-import com.mojang.blaze3d.pipeline.ColorTargetState;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.mojang.renderpearl.api.pipeline.BlendFunction;
+import com.mojang.renderpearl.api.pipeline.ColorTargetState;
+import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
-import net.minecraft.client.renderer.rendertype.OutputTarget;
 import net.minecraft.client.renderer.rendertype.RenderSetup;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -28,7 +27,7 @@ public class UnobtrusiveBeamRenderer {
             "unobstructive_beacon_beam",
             RenderSetup.builder(RENDER_PIPELINE)
                     .withTexture("Sampler0", BeaconRenderer.BEAM_LOCATION)
-                    .setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET)
+                    .setOitPipelines(RenderPipelines.OIT_BEACON_BEAM)
                     .createRenderSetup()
     );
 
@@ -54,7 +53,7 @@ public class UnobtrusiveBeamRenderer {
         float textureScroll = Mth.frac(animationDirection * 0.2F - Mth.floor(animationDirection * 0.1F));
 
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(time * 2.25F - 45.0F));
+        poseStack.rotateDegrees(Axis.YP, time * 2.25F - 45.0F);
 
         float minV = -1.0F + textureScroll;
         float maxV = height * partialTick * (0.5F / innerRadius) + minV;
